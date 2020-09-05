@@ -1,10 +1,11 @@
 import React from "react";
-import "./assets/style.scss";
 
 const App = () => {
   return (
     <div>
-      <h1 className="title">절치부심</h1>
+      <h1 className="text-xs uppercase font-hairline">
+        tailwindcss setting test
+      </h1>
     </div>
   );
 };

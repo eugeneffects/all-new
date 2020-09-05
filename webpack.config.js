@@ -32,16 +32,7 @@ module.exports = {
       },
       {
         test: /\.(css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
     ],
   },
@@ -56,7 +47,8 @@ module.exports = {
       filename: "index.html", // output으로 출력할 파일은 index.html 이다.
     }),
     new MiniCssExtractPlugin({
-      filename: "./src/assets/style.scss",
+      filename: "style.css",
+      chunkFilename: "style.css",
     }),
   ],
 };
