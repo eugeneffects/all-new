@@ -4,10 +4,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname + "/dist"),
-  },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html", // public/index.html 파일을 읽는다.
@@ -44,6 +40,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname + "/dist"),
   },
   devServer: {
     contentBase: "./dist",
