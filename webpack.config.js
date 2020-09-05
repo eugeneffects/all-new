@@ -8,7 +8,16 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname + "/dist"),
   },
-  mode: "none",
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html", // public/index.html 파일을 읽는다.
+      filename: "index.html", // output으로 출력할 파일은 index.html 이다.
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css",
+      chunkFilename: "style.css",
+    }),
+  ],
   module: {
     rules: [
       {
@@ -40,15 +49,7 @@ module.exports = {
     contentBase: "./dist",
     port: 3000,
     historyApiFallback: true,
+    inline: true,
+    hot: true,
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html", // public/index.html 파일을 읽는다.
-      filename: "index.html", // output으로 출력할 파일은 index.html 이다.
-    }),
-    new MiniCssExtractPlugin({
-      filename: "style.css",
-      chunkFilename: "style.css",
-    }),
-  ],
 };
